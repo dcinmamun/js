@@ -148,11 +148,20 @@ console.log(n1);
 console.log(n2);
 
 for(let i=3 ;i<=8 ;i++){
-    sum=n1+n2
-   console.log(sum);
-   n1=n2;
-   n2=sum;
+    if(sum=n1+n2){
+
+        console.log(sum);
+    }
+    else{
+        
+    }
 }
+  
+else{
+    console.log(eror);
+}
+
+
 
 
 
