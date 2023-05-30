@@ -13,7 +13,7 @@
 // }
 
 // else{
-//     console.log("absolute")5/3
+//     console.log("absolute")
 // }
 
 
@@ -24,7 +24,7 @@
 
 // else  { 
 // }
-// }
+
 
 // let input=5;
 // let result=1;
