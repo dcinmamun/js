@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre> <form id="ccsl">
+    <label for="">Name</label>
+    <input type="text" id="name">
+
+    <label for="">Contact</label>
+    <input type="text" id="contact">
+
+    <label for="">Remarks</label>
+    <textarea name="remarks" id="remarks" cols="30" rows="10"></textarea>
+
+    <label for="">Gender</label>
+    <input type="radio" name="gender" value="male">Male
+    <input type="radio" name="gender" value="female">Female
+
+    <label for="">Hobby</label>
+    <input type="checkbox" value="travelling">Travelling
+    <input type="checkbox" value="writting">Writting
+    <input type="checkbox" value="reading">Reading
+
+    <label for="">Subject</label>
+    <select name="subject" id="subject">
+        <option value="JEE">JEE</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+    </select>
+
+    <input type="submit" value="submit">
+</form></pre>
+
+
+<script>
+    function dataTransfer(event){
+        event.preventDefault();
+
+   
+
+
+    const name=document.getElementById("name").value;
+    const contact=document.getElementById("contact").value;
+    const remarks=document.getElementById("remarks").value;
+    const subject=document.getElementById("subject").value;
+    const gender=document.querySelector('input[type=radio]:checked').value;
+    const Hobby=document.querySelectorAll('input[type=checkbox]:checked');
+    
+    let ho=[];
+
+    Hobby.forEach(function(Hobby){
+
+        ho.push(Hobby.value);
+    });
+
+   
+
+    var output="Name: "+name +"<br>";
+    output +="contact: "+contact +"<br>";
+    output +="Remarks: "+remarks +"<br>";
+    output +="Gender: "+gender +"<br>";
+    output +="Hobby: "+ho +"<br>";
+    output +="subject: "+subject +"<br>";
+
+
+    var openWindow=window.open('','_blank');
+    openWindow.document.write('<pre>'+output+'</pre>');
+}
+
+    let form=document.getElementById('ccsl');
+        form.addEventListener('submit',dataTransfer);
+
+
+
+
+</script>
+</body>
+</html>

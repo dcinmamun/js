@@ -23,7 +23,18 @@
     <input type="radio" name="gender" value="male">Male
     <input type="radio" name="gender" value="female">Female
 
-    <input type="button" value="submit" ondblclick="DataTransfer()">
+    <label for="">subject</label>
+    <select name="" id="">
+        <option value="">--chose one--</option>
+        <option value="">JEE</option>
+        <option value="">Java</option>
+        <option value="">Html</option>
+        <option value="">NEt</option>
+    </select>
+
+    
+
+    <input type="button" value="submit" ondblclick="dataTransfer()">
 
 </form></pre>
 
@@ -32,6 +43,21 @@
         const name=document.getElementById("name",name).value;
         const email=document.getElementById("email",email).value;
         const password=document.getElementById("password",password).value;
+
+
+
+
+
+        localStorage.getItem("name",name);
+        localStorage.getItem("email",email);
+        localStorage.getItem("password",password);
+
+
+
+
+
+
+
     }
 </script>
 </body>

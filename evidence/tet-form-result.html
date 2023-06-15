@@ -19,8 +19,19 @@
 
     <script>
         const name=document.getElementById("name").innerHTML=localStorage.getItem("name");
-        const name=document.getElementById("email").innerHTML=localStorage.getItem("email");
-        const name=document.getElementById("password").innerHTML=localStorage.getItem("password");
+        const email=document.getElementById("email").innerHTML=localStorage.getItem("email");
+        const Password=document.getElementById("password").innerHTML=localStorage.getItem("password");
+
+
+
+
+            localStorage.setItem("name",name);
+            localStorage.setItem("email",email);
+            localStorage.setItem("password",password);
+
+
+
+
     </script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="idb" >
+        <label>Name</label>
+        <input type="text" id="name"><br>
+
+        <label>Contact</label>
+        <input type="text" id="contact"><br>
+
+        <label for="">Remarks</label><br>
+        <textarea name="" id="remarks" cols="30" rows="5"></textarea><br>
+
+        <label for="">Gender</label>
+        <input type="radio"  name="gender" value="Male">Male
+        <input type="radio"  name="gender" value="Female">Female <br>
+
+        <label for="">Subject</label>
+        <input type="checkbox" value="NT">NT
+        <input type="checkbox"  value="IAD">IAD
+        <input type="checkbox" value="DDD">DDD
+        <input type="checkbox"  value="ESAD ">ESAD <br>
+
+        <label for="">Location</label>
+
+        <select name="location" id="location">
+            <option value="none">--select one--</option>
+            <option value="Banani">Banani</option>
+            <option value="Dhanmondi">Dhanmondi</option>
+            <option value="Mirpur">Mirpur</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit" onclick="datatransfer()">
+    </form>
+    <script>
+        function datatransfer(event){
+                event.preventDefault();
+
+
+                const Name=document.getElementById("name").value;
+                const contact=document.getElementById("contact").value;
+                const remarks=document.getElementById("remarks").value;
+                const gender=document.querySelector('input[type=radio]:checked').value;
+                const Sub=document.querySelectorAll('input[type=checkbox]:checked');
+                const location=document.getElementById("location").value;
+                const Subject=[];
+
+                sub.forEach(function(sub){
+                    subject.push(sub.value);
+                });
+                let output="Name  "+name+"<br>";
+                output="contact  "+contact+"<br>";
+                output="remarks  "+remarks+"<br>";
+                output="location  "+location+"<br>";
+                output="gender  "+gender+"<br>";
+                output="Subject  "+Subject.join(",")+"<br>";
+
+                let openWindow=window.open("","_blank");
+                    openWindow.document.write(output+"<br>");
+        }
+
+        let form=document.write('idb');
+            form.addEventListene('submit',datatransfer);
+    </script>
+
+</body>
+</html>

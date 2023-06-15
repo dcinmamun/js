@@ -5,22 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <style>
+        span{
+            color: red;
+            font-weight: 400;
+        }
+
+    </style>
 </head>
 <body>
     <pre>
-    <form action="form-result.html">
+    <form action="form_result.html" onsubmit="return dataTransfer()">
         <label >name</label>
         <input type="text" id="name">
+        <span id="sName"></span>
+              
         <label >Email</label>
-        <input type="email" id="email">
+        <input type="text" id="email">
+        <span id="sEmail"></span>
 
         <label >password</label>
         <input type="password" id="password">
+        <span id="sPassword"></span>
 
         <label >Gender</label>
         <input type="radio" name="gender" id="male">Male
         <input type="radio" name="gender" id="female">Female
         <input type="radio" name="gender" id="other">Other
+        <span id="sGender"></span>
 
         <label for="">subject</label>
         <select name="" id="subject">
@@ -31,10 +43,10 @@
         </select>
 
         <label for="">Hobby</label>
-        <input type="checkbox" value="Playing">Playing
-        <input type="checkbox" value="Gardening">Gardening
-        <input type="checkbox" value="Reading">Reading
-        <input type="checkbox" value="Swimming">Swimming
+        <input type="checkbox" value="">Playing
+        <input type="checkbox" value="">Gardening
+        <input type="checkbox" value="">Reading
+        <input type="checkbox" value="">Swimming
 
         
 
@@ -44,7 +56,7 @@
 
 
 
-        <input type="submit" value="submit" onclick="dataTransfer()">
+        <input type="submit" value="submit">
     </form>
 </pre>
 
@@ -54,19 +66,17 @@
         const name=document.getElementById("name").value;
         const email=document.getElementById("email").value;
         const password=document.getElementById("password").value;
-        const about = document.getElementById("about").value;
-            
-
-
-
+        const about =document.getElementById("about").value;
+        const regEx= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          
 
         let gender;
-        if(document.getElementById("male").checked==true){
+        if(document.getElementById("male").checked){
             gender="Male";
 
-        }
+        }                                  
 
-        else if(document.getElementById("female").checked==true){
+        else if(document.getElementById("female").checked){
             gender="Female";
 
         }
@@ -74,6 +84,8 @@
         else {
             gender="Other";
         }
+
+       
 
             let sub=document.getElementById("subject");
             let subject=sub.options[sub.selectedIndex].text;
@@ -85,20 +97,107 @@
                 hobby.push(ho[i].value);
             }
             let s_hobby=hobby.toString()
-              
 
 
 
-        localStorage.setItem("name",name);
-        localStorage.setItem("email",email);
-        localStorage.setItem("password",password);
-        localStorage.setItem("gender",gender);
-        localStorage.setItem("subject",subject);
-        localStorage.setItem("s_hobby", s_hobby);
-        localStorage.setItem("s_about", about);
+            // validate start
+
+            if(name.length<=3 || name.length>=20){
+                debugger;
+                document.getElementById("sName").innerHTML=("input must 3-20 character");
+                return false;
+
+            }
+            // if(!(regEx.test(email))){
+            //     document.getElementById("sEmail").innerHTML="invalid Email";
+            // }
+            if(!(regEx.test(email))){
+                document.getElementById("sEmail").innerHTML = "invalid Email";
+                return false;
+            }
+
+           
+
+
+            sessionStorage.setItem("name",name);
+            sessionStorage.setItem("email",email);
+            sessionStorage.setItem("password",password);
+            sessionStorage.setItem("gender",gender);
+            sessionStorage.setItem("subject",subject);
+            sessionStorage.setItem("s_hobby",s_hobby);
+            sessionStorage.setItem("s_about",about);
 
         }
       
-    </script>
+    </script> -->
+
+    <body>
+        <form id="idb" >
+            <label>Name</label>
+            <input type="text" id="name"><br>
+    
+            <label>Contact</label>
+            <input type="text" id="contact"><br>
+    
+            <label for="">Remarks</label><br>
+            <textarea name="" id="remarks" cols="30" rows="5"></textarea><br>
+    
+            <label for="">Gender</label>
+            <input type="radio"  name="gender" value="Male">Male
+            <input type="radio"  name="gender" value="Female">Female <br>
+    
+            <label for="">Subject</label>
+            <input type="checkbox" value="NT">NT
+            <input type="checkbox"  value="IAD">IAD
+            <input type="checkbox" value="DDD">DDD
+            <input type="checkbox"  value="ESAD ">ESAD <br>
+    
+            <label for="">Location</label>
+    
+            <select name="location" id="location">
+                <option value="none">--select one--</option>
+                <option value="Banani">Banani</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mirpur">Mirpur</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    
+        <script>
+            function dataTransfer(event) {
+               event.preventDefault();
+    
+                const name = document.getElementById("name").value;
+                const contact = document.getElementById("contact").value;
+                const reamrks = document.getElementById("remarks").value;
+                const location = document.getElementById("location").value;
+                const gender = document.querySelector('input[type=radio]:checked').value;
+                const sub=document.querySelectorAll('input[type=checkbox]:checked');
+                let subject=[];
+    
+                sub.forEach(function(sub){
+                    subject.push(sub.value);
+                });
+    
+    
+              var  output = "Name: " + name + "<br>";            
+                output += "Contact: " + contact + "<br>";
+                output += "Remarks : " + reamrks + "<br>";
+                output += "Gender : " + gender + "<br>";
+                output += "Subject : " + subject.join(", ")  + "<br>";
+                output += "location : " + location + "<br>";
+    
+                
+                var newWindow = window.open('', '_blank');
+                newWindow.document.write('<pre>' + output + '</pre>');
+            }
+    
+            let form = document.getElementById('idb');
+            form.addEventListener('submit', dataTransfer);
+    
+        </script>
+    
+    
 </body>
 </html>

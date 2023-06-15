@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    <form id="ccsl">
+       
+    <label>Name</label>
+    <input type="text" id="name">
+
+    <label>Contact</label>
+    <input type="text" id="contact">
+
+    <label for="">Remarks</label><br>
+    <textarea name="" id="remarks" cols="30" rows="10"></textarea>
+
+    <label for="">Gender</label>
+    <input type="radio"  name="gender" value="Male">Male
+    <input type="radio"  name="gender" value="Female">Female 
+
+    <label for="">Subject</label>
+    <input type="checkbox" value="NT">NT
+    <input type="checkbox"  value="IAD">IAD
+    <input type="checkbox" value="DDD">DDD
+    <input type="checkbox"  value="ESAD ">ESAD 
+
+    <label for="">Location</label>
+
+    <select name="location" id="location">
+        
+        <option value="Banani">Banani</option>
+        <option value="Dhanmondi">Dhanmondi</option>
+        <option value="Mirpur">Mirpur</option>
+    </select>
+    <br>
+    <input type="submit" value="Submit">
+
+</form></pre>
+<script>
+    function dataPass(event){
+        event.preventDefault();
+
+        const name=document.getElementById("name").value;
+        const contact=document.getElementById("contact").value;
+        const remarks=document.getElementById("remarks").value;
+        const location=document.getElementById("location").value;
+        const gender=document.querySelector('input[type=radio]:checked').value;
+        // const Sub=document.querySelectorAll('input[type=checkbox]:checked');
+        // const Subject=[];
+
+        // sub.forEach(function(sub){
+        //     Subject.push(sub.value);
+        // })
+
+        var output="name: "+name+"<br>";
+         output +="Contact: "+contact+"<br>";
+         output +="Remarks: "+remarks+"<br>";
+         output +="Location: "+location+"<br>";
+         output +="Gender"+gender+"<br>";
+        //  output +="Subject"+Subject.join(",") +"<br>";
+
+         let newWindow=window.open('','_blank');
+            newWindow.document.write('<pre>'+output+'</pre>');                
+
+    }
+                let dataForm=document.getElementById('ccsl');
+                dataForm.addEventListener('submit',dataPass);
+
+
+
+
+
+</script>
+
+</body>
+</html>
